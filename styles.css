@@ -1,0 +1,66 @@
+:root {
+  --main-clr: rgb(255, 248, 239);
+
+  --border-template: 6px dashed rgb(175, 212, 238);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family:
+    "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans",
+    Arial, sans-serif;
+  display: grid;
+  grid-template-rows: minmax(0px, auto) 1fr minmax(50px, auto);
+  align-items: center;
+
+  gap: 1rem;
+  padding: min(16px, 2.4%);
+  margin: 0 auto;
+
+  max-width: 1200px;
+  min-height: 100dvh;
+
+  background-color: var(--main-clr);
+}
+
+body > * {
+  border: var(--border-template);
+}
+
+main > * {
+  border: var(--border-template);
+}
+
+header,
+footer {
+  text-align: center;
+
+  padding: min(16px, 2.4%);
+
+  background-color: rgb(241, 226, 255);
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+
+  gap: 1rem;
+  padding: min(16px, 2.4%);
+
+  height: 100%;
+  background-color: rgb(214, 241, 214);
+}
+
+.main-grid-cell {
+  background-color: rgb(240, 236, 195);
+
+  min-height: 300px;
+
+  padding: min(16px, 3%);
+  place-content: center;
+}
