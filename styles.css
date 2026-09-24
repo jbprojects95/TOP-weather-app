@@ -56,13 +56,10 @@ main {
 }
 
 .main-grid-cell {
-  /* background-color: rgb(240, 236, 195); */
-
   min-height: 300px;
 
   padding: min(16px, 3%);
   place-content: center;
-  /* border: var(--border-template); */
 }
 
 .weather-display {
@@ -86,7 +83,6 @@ main {
 
 .weather-img {
   align-self: center;
-  /* border: var(--border-template); */
 }
 
 .weather-img img {
@@ -102,28 +98,20 @@ main {
 .weather-list {
   width: 100%;
   height: 100%;
-  background-color: rgb(15, 25, 140);
-  padding: min(8px, 2%);
+  background-color: #303cc9;
+  padding-inline: min(24px, 5%);
   align-content: center;
 }
 
 .weather-list li {
   list-style-type: none;
+  border-bottom: 1px solid var(--txt-clr);
 }
 
 .weather-data-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1px dashed var(--txt-clr);
+  /* border: 1px dashed var(--txt-clr); */
   padding-block: 0.2rem;
 }
-
-/* .weather-list > span {
-  display: flex;
-  align-self: center;
-  width: fit-content;
-  min-width: 120px;
-
-  border: 1px dashed var(--txt-clr);
-} */
