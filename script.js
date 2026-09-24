@@ -1,49 +1,59 @@
-async function weatherData() {
-  // URL: https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/[location]/[YYYY-MM-DD]/[YYY-MM-DD]?key=YOUR_API_KEY
+// URL: https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/[location]/[YYYY-MM-DD]/[YYY-MM-DD]?key=YOUR_API_KEY
+
+async function fetchWeatherData() {
   const response = await fetch(
     "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Leicestershire/today?key=X8RNAGCED7FPQSUGBUS53M9T4",
   );
   const searchData = await response.json();
   console.log(searchData);
+  return searchData;
+}
+
+function processData(searchData) {
+  const location = searchData.address;
+  const temp = searchData.currentConditions.temp;
+  const tempFeelsLike = searchData.currentConditions.feelslike;
+  const humidity = searchData.currentConditions.humidity;
+  const precipitationChance = searchData.currentConditions.precipprob;
+  const precipitation = searchData.currentConditions.precip;
+
+  return {
+    location,
+    temp,
+    tempFeelsLike,
+    humidity,
+    precipitationChance,
+    precipitation,
+  };
+}
+
+async function displayData() {
+  const searchData = await fetchWeatherData();
+  const processedData = processData(searchData);
 
   const weatherLocation = document.getElementById("weatherLocation");
   weatherLocation.textContent = searchData.address;
   const chanceOfRain = searchData.currentConditions.precipprob;
-  const weatherMessage = searchData.description;
+  // const weatherMessage = searchData.description;
 
-  const weatherDescription = document.getElementById("weatherMessage");
-  weatherDescription.textContent = weatherMessage;
-  createWeatherElement("li", "Temp:", searchData.currentConditions.temp);
-  createWeatherElement(
-    "li",
-    "Feels like:",
-    searchData.currentConditions.feelslike,
-  );
-  createWeatherElement(
-    "li",
-    "Humidity:",
-    searchData.currentConditions.humidity,
-  );
-  createWeatherElement(
-    "li",
-    "Precipitation Chance:",
-    searchData.currentConditions.precipprob,
-  );
-
-  if (chanceOfRain >= 10) {
-    createWeatherElement(
-      "li",
-      "Precipitation:",
-      searchData.currentConditions.precip,
-    );
-  }
+  // const weatherDescription = document.getElementById("weatherMessage");
+  // weatherDescription.textContent = weatherMessage;
+  document.getElementById("temp").textContent = processedData.temp;
+  document.getElementById("feelsLike").textContent =
+    processedData.tempFeelsLike;
+  document.getElementById("humidity").textContent = processedData.humidity;
+  document.getElementById("precipitation").textContent =
+    processedData.precipitation;
 }
 
-function createWeatherElement(listItem, itemName, weatherContent) {
-  const weatherDash = document.getElementById("weatherDash");
-  const weatherListItem = document.createElement(listItem);
-  weatherListItem.textContent = itemName + " " + weatherContent;
-  weatherDash.append(weatherListItem);
-}
+// function createWeatherElement(listItem, weatherContent, id) {
+//   const weatherDash = document.getElementById("weatherDash");
+//   const weatherListItem = document.createElement(listItem);
+//   weatherListItem.textContent = weatherContent;
+//   weatherListItem.id = id;
+//   weatherDash.append(weatherListItem);
+// }
 
-weatherData();
+displayData();
+
+// temp, feels like, humidity, precipitation

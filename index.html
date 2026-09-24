@@ -13,13 +13,36 @@
     </header>
 
     <main class="main-layout">
-      <section class="main-grid-cell info-section">
-        <h2>
-          <span class="title-span" id="weatherLocation"></span> Weather for
-          Today.
-        </h2>
-        <h3 id="weatherMessage" class="weather-message"></h3>
-        <ul class="weather-list" id="weatherDash"></ul>
+      <section class="main-grid-cell">
+        <div class="weather-display">
+          <div class="weather-img"><img src="/img/cloudy.svg" alt="" /></div>
+          <div class="weather-location">
+            <span class="title-span" id="weatherLocation"></span>
+          </div>
+          <div class="weather-data-list">
+            <ul class="weather-list" id="weatherDash">
+              <li class="weather-data-row">
+                Temp
+                <span id="temp"></span>
+              </li>
+
+              <li class="weather-data-row">
+                Feels like
+                <span id="feelsLike"></span>
+              </li>
+
+              <li class="weather-data-row">
+                Humidity
+                <span id="humidity"></span>
+              </li>
+
+              <li class="weather-data-row">
+                Precipitation
+                <span id="precipitation"></span>
+              </li>
+            </ul>
+          </div>
+        </div>
       </section>
       <!-- <section class="main-grid-cell form-section">
         <h2>Cell 2</h2>
