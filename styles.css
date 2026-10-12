@@ -57,8 +57,6 @@ main {
 
 .main-grid-cell {
   min-height: 300px;
-
-  padding: min(16px, 3%);
   place-content: center;
 }
 
@@ -71,13 +69,14 @@ main {
 
   max-width: 30ch;
   width: 100%;
-  height: 400px;
+  height: auto;
+  gap: 1rem;
 
   background-color: rgb(91, 129, 225);
 }
 
 .main-grid-cell span {
-  font-size: clamp(1.2rem, 4vw, 2rem);
+  font-size: 1.5rem;
   line-break: strict;
 }
 
@@ -86,25 +85,30 @@ main {
 }
 
 .weather-img img {
-  width: min(200px, 50%);
-  max-width: 100%;
+  width: 100%;
+  max-width: 100px;
   height: auto;
+  padding-block: 1rem;
 }
 
 .weather-data-list {
   place-self: stretch;
+  background-color: #303cc9;
 }
 
 .weather-list {
   width: 100%;
   height: 100%;
-  background-color: #303cc9;
   padding-inline: min(24px, 5%);
   align-content: center;
 }
 
 .weather-list li {
   list-style-type: none;
+  /* border-bottom: 1px solid var(--txt-clr); */
+}
+
+.weather-list li:not(:last-child) {
   border-bottom: 1px solid var(--txt-clr);
 }
 
@@ -114,4 +118,87 @@ main {
   justify-content: space-between;
   /* border: 1px dashed var(--txt-clr); */
   padding-block: 0.2rem;
+}
+
+.weather-control {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 38px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(14px);
+  transform: translateX(14px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.location-search {
+  max-width: 300px;
+  width: 100%;
+}
+
+.location-searchbar {
+  padding-block: 0.3rem;
+  padding-inline: 0.2rem;
+}
+
+.location-search button {
+  padding: 0.3rem;
 }

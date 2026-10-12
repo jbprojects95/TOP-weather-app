@@ -15,7 +15,26 @@
     <main class="main-layout">
       <section class="main-grid-cell">
         <div class="weather-display">
-          <div class="weather-img"><img src="/img/cloudy.svg" alt="" /></div>
+          <div class="weather-img">
+            <img src="/img/cloudy.svg" alt="" />
+          </div>
+          <div class="weather-control">
+            <span>°F</span>
+            <label class="switch">
+              <input type="checkbox" id="tempToggle" />
+              <span class="slider round"></span> </label
+            ><span>°C</span>
+          </div>
+          <div class="location-search">
+            <input
+              type="text"
+              placeholder="Enter a location..."
+              id="locationSearch"
+              class="location-searchbar"
+            />
+            <button type="button" id="searchBtn" class="search-btn">></button>
+          </div>
+
           <div class="weather-location">
             <span class="title-span" id="weatherLocation"></span>
           </div>
